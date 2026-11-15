@@ -1,0 +1,35 @@
+ c-- Relcion 1:N
+-- Un profesor imparte muchas materias 
+create database maestros;
+use maestros;
+
+create table profesores(
+id int primary key auto_increment,
+nombre varchar(100)
+);
+
+create table materias(
+id int primary key auto_increment,
+id_profesor int,
+materia varchar(100),
+foreign key (id_profesor) references profesores(id)
+);
+
+
+-----------------------------------------------------------
+
+-- Relcion 1:N
+-- Una escuela tiene muchos estudiantes 
+create database UNRC;
+use UNRC;
+create table escuela (
+id int primary key auto_increment,
+nombre_escuela varchar(100)
+);
+
+create table estudiantes(
+id int primary key auto_increment,
+id_escuela int,
+estuduante varchar(100),
+foreign key (id_escuela) references escuela(id)
+);

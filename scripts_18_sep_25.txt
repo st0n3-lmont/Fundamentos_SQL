@@ -1,0 +1,104 @@
+-- cargar la base de datos: world y empleados de dos maneras diferentes
+-- Paso 1. crear una base de datos 
+-- mediante la instrucción 
+	CREATE DATABASE mi_primera_base;
+
+
+
+
+USE World;
+SHOW TABLES;
+# Selecciona tabla
+SELECT * FROM city; 
+SELECT * FROM country; 
+# Selecciona columna de tabla
+SELECT continent FROM country;
+SELECT continent, name FROM country;
+SELECT name, continent FROM country; 
+# Cambiar el nombre a la columna:
+SELECT Continent as Continente FROM country;
+SELECT Name as Nombre, Continent as Continente FROM country;
+# Considerando cambiar el nombre de la columna pero ahora aplicado a una cadena de caracteres
+SELECT Continent as "Continentes de todo el mundo" FROM country;
+
+# Es posible utilizar en las lineas de codigo anterior Operadores aritmeticos
+SELECT 49/7;
+# Encuentra los habitantes por km cuadrado, ¿Que informacion es importante mostrar?
+# ¿Que columnas?
+SELECT name, (Population/SurfaceArea) as "Habitantes por km cuadrado" FROM country;
+
+
+
+
+
+
+
+
+USE World;
+SHOW TABLES;
+# Selecciona tabla
+SELECT * FROM city; 
+SELECT * FROM country; 
+# Selecciona columna de tabla
+SELECT continent FROM country;
+SELECT continent, name FROM country;
+SELECT name, continent FROM country; 
+# Cambiar el nombre a la columna:
+SELECT Continent as Continente FROM country;
+SELECT Name as Nombre, Continent as Continente FROM country;
+# Considerando cambiar el nombre de la columna pero ahora apliacdo a una cadena de caracteres
+SELECT Continent as "Continentes de todo el mundo" FROM country;
+
+# Es posible utilizar en las lineas de codigo anterior Operadores aritmeticos
+SELECT 49/7;
+# Encuentra los habitantes por km cuadrado, ¿Que informacion es importante mostrar?
+# ¿Que columnas?
+SELECT name, (Population/SurfaceArea) as "Habitantes por km cuadrado" FROM country;
+
+
+
+
+# -----------------------------------------
+# Seleccionamos una tabla
+SELECT * FROM salaries;
+# Una vez seleccionada la tabla utilizamos WHERE
+SELECT * FROM salaries Where emp_no = 10002;
+SELECT * FROM salaries Where salary = 67534;
+
+# Operadores de comparacion <,>,!=,=
+SELECT 4 < 5; # 1 == verdadero
+SELECT 4 > 5; # 1 == falso
+SELECT * FROM salaries Where salary = 60117;
+SELECT * FROM salaries Where salary != 60117;
+
+# Operadores logicos (AND, OR, NOT)
+SELECT TRUE AND TRUE;
+SELECT TRUE AND FALSE;
+SELECT 1 AND 1;
+
+SELECT * FROM employees;
+# Desplazamiento horizontal (WHERE)
+SELECT * FROM employees WHERE gender = "M" AND last_name = "Facello";
+# Que cambia si ahora utilizamos el operador OR ?
+SELECT * FROM employees WHERE gender = "M" OR last_name = "Facello";
+
+# ¿ Como poder utilizar el operador NOT ?
+SELECT NOT False;
+# Muestra todos aquellos empleados que sean femeninos
+SELECT * FROM employees WHERE gender != "M";
+# O bien, usando el operador NOT
+SELECT * FROM employees WHERE NOT gender = "M";
+
+# Between: 
+# Sirve para realizar consultas que tengan un rango 
+SELECT * FROM employees WHERE emp_no BETWEEN 10001 AND 10005;
+# ¿Como podria ejecutar la linea anterior sin utilizar el operador BETWEEN?
+SELECT * FROM employees WHERE emp_no >= 10001 AND emp_no <= 10005 ;
+# Considerando que ahora NO queremos mostrar todos aquellos empleados que se encuentran entre
+# 10001 y 10005
+SELECT * FROM employees WHERE emp_no NOT BETWEEN 10001 AND 10005;
+# Aqui es importante considerar el orden de los elementos para BETWEEN
+SELECT * FROM employees WHERE emp_no BETWEEN 10005 AND 10001; # ERROR
+
+# Apliquemos BETWEEN para el caso de los cumpleaños en el año 53
+SELECT * FROM employees WHERE birth_date BETWEEN "1953-01-01" AND "1953-12-31";

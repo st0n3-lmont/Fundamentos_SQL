@@ -1,0 +1,15 @@
+-- Selecciones especificas "%"
+USE world;
+SHOW TABLES;
+SELECT * FROM employees;
+
+-- Selecciona todos los trabajadores que nacieron en el 53
+SELECT * FROM employees WHERE birth_date like "1953%";
+-- Selecciona todos los trabajadores cuyo apellido empiece con S
+SELECT * FROM employees WHERE last_name like "S%";
+-- Selecciona todos los trabajadores donde su apellido empiece con Si
+SELECT * FROM employees WHERE last_name like "Si%";
+-- Selecciona todos los trabajadores cuyo apellido termine con o
+SELECT * FROM employees WHERE last_name like "%o";
+-- Selecciona todos los trabajadores cuyo apellido termine con lo
+SELECT * FROM employees WHERE last_name like "%lo";

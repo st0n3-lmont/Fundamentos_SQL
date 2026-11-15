@@ -1,0 +1,50 @@
+-- Crear una base de datos:
+CREATE DATABASE base_estudiantes;
+USE base_estudiantes;
+
+-- Crear tablas:
+CREATE TABLE estudiantes (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	nombre VARCHAR(100),
+	edad INT
+);
+-- verificar con SHOW TABLES
+
+CREATE TABLE carrera (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	nombre_carrera VARCHAR(100),
+	plantel INT
+);
+-- # verificar con SHOW TABLES
+
+-- Dropear o quitar tablas
+DROP TABLE carrera;
+-- Verificar con SHOW TABLES
+
+-- Insertar datos a alguna tabla
+INSERT INTO estudiantes(nombre, edad) VALUES
+("Juanito",20),
+("Salazar",25),
+("Jose",23);
+
+SHOW TABLES;
+SELECT * FROM estudiantes;
+
+-- Llave foranea (FOREIGN KEY)
+/* Es un campo en una tabla que sirve para conectar datos de otra tabla.
+hace referencia la llave primaria - PRIMARY KEY de otra tabla */
+CREATE TABLE  calificaciones (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    estudiante_id INT,
+    materia VARCHAR(50),
+    calificacion DECIMAL(4,2),
+    FOREIGN KEY (estudiante_id) REFERENCES estudiantes(id)
+);
+
+-- Insertar datos a alguna tabla
+INSERT INTO calificaciones(estudiante_id, materia, calificacion) VALUES
+(1,"Base datos",10),
+(2,"Base datos",10),
+(3,"Base datos",10);
+
+SELECT * FROM calificaciones;

@@ -1,0 +1,13 @@
+-- Interaccion entre los valores de la columnas
+
+USE world;
+SHOW TABLES;
+-- Nota:Es posible realizar operaciones aritmeticas
+SELECT 49/7;
+
+-- Operaciones aritmeticas con columnas
+SELECT * FROM country;
+-- Muestra los encabezados Name, SurfaceArea y Population
+SELECT name, SurfaceArea, Population FROM country;
+-- Encuentra los habitantes por km cuadrado
+SELECT name, (Population/SurfaceArea) as "Habitantes por km cuadrado" FROM country;

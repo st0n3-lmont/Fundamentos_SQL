@@ -1,0 +1,25 @@
+-- Intervalos de columnas
+
+USE world;
+SHOW TABLES;
+-- Muestra la tabla salarios de la base de datos "world"
+SELECT * FROM salaries;
+
+-- Operadores de comparacion: = != > < 
+-- Operadores logicos: AND, OR, NOT, BETWEEN
+
+-- Muestra todos los empleados que tienen un salario de 74333
+SELECT * FROM salaries WHERE salary = 74333;
+-- Muestra todos los salarios que no son iguales a 74333
+SELECT * FROM salaries WHERE salary != 74333;
+SELECT * FROM salaries WHERE NOT salary = 74333;
+
+-- Muestra todos los empleados que tienen salario mayor que 104946
+SELECT * FROM salaries WHERE salary > 104946;
+-- Muestra todos los empleados que tienen salario menor que 71046
+SELECT * FROM salaries WHERE salary < 71046;
+
+-- Muestra todos los empleados que tienen 40006 <= salario <= 60117
+SELECT * FROM salaries WHERE salary >= 40006 AND salary <= 60117;
+SELECT * FROM salaries WHERE salary BETWEEN 40006 AND 60117;  
+-- Nota: BETWEEN toma los extremos del intervalo

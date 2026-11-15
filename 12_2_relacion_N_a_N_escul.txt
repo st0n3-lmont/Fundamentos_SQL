@@ -1,0 +1,48 @@
+CREATE DATABASE escul; 
+USE escul;
+
+-- Tabla Estudiantes
+CREATE TABLE Estudiantes (
+    id_estudiante INT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL
+);
+
+-- Tabla Cursos
+CREATE TABLE Cursos (
+    id_curso INT PRIMARY KEY,
+    nombre_curso VARCHAR(100) NOT NULL
+);
+
+-- TABLA INTERMEDIA (Tabla Puente)
+CREATE TABLE Inscripciones (
+    id_inscripcion INT PRIMARY KEY,
+    id_estudiante INT,
+    id_curso INT,
+    fecha_inscripcion DATE,
+    -- Llaves foráneas hacia ambas tablas
+    FOREIGN KEY (id_estudiante) REFERENCES Estudiantes(id_estudiante),
+    FOREIGN KEY (id_curso) REFERENCES Cursos(id_curso)
+);
+
+
+
+-- Insertar estudiantes
+INSERT INTO Estudiantes VALUES 
+(1, 'Ana García'),
+(2, 'Carlos López'),
+(3, 'María Torres');
+
+-- Insertar cursos
+INSERT INTO Cursos VALUES 
+(101, 'Matemáticas'),
+(102, 'Programación'),
+(103, 'Historia');
+
+-- Establecer relaciones en la tabla intermedia
+INSERT INTO Inscripciones VALUES 
+(1, 1, 101, '2024-01-15'),  -- Ana en Matemáticas
+(2, 1, 102, '2024-01-15'),  -- Ana en Programación
+(3, 2, 101, '2024-01-16'),  -- Carlos en Matemáticas
+(4, 2, 103, '2024-01-16'),  -- Carlos en Historia
+(5, 3, 102, '2024-01-17'),  -- María en Programación
+(6, 3, 103, '2024-01-17');  -- María en Historia

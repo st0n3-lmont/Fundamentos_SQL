@@ -1,0 +1,14 @@
+-- Funciones de agregacion SUM, AVG, MIN, MAX
+USE world;
+SHOW TABLES;
+SELECT * FROM salaries;
+
+-- Suma todos los salarios de los empleados 
+SELECT SUM(salary) FROM salaries;
+-- Cambia el encabezado de la columna SUM(salary)
+SELECT SUM(salary) AS "Salario total" FROM salaries;
+-- Calcula el salario promedio de los empleados, asi como su maximo y minimo
+-- en una sola linea de codigo:
+SELECT AVG(salary) AS "Salario promedio",
+MIN(salary) AS "Salario minimo",
+MAX(salary) AS "Salario maximo" FROM salaries;

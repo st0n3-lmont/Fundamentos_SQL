@@ -1,0 +1,59 @@
+/* Analizar la información climática usando consultas SQL que
+relacionan ciudades, estaciones y mediciones registradas. */
+
+-- Base de datos:
+
+CREATE DATABASE practica_2;
+USE practica_2;
+
+-- Tablas:
+
+CREATE TABLE ciudades (
+id_ciudad INT PRIMARY KEY AUTO_INCREMENT,
+ciudad VARCHAR(50),
+region VARCHAR(50)
+);
+INSERT INTO ciudades (ciudad,region) VALUES
+("CDMX","Centro"),
+("Guadalajara","Occidente"),
+("Monterrey","Norte"),
+("Tuxtla Gutierrez","Sur");
+
+CREATE TABLE estaciones (
+id_estaciones INT PRIMARY KEY,
+nombre_estacion VARCHAR(50),
+id_ciudad INT
+);
+INSERT INTO estaciones (id_estaciones,nombre_estacion,id_ciudad) VALUES
+(10,"CDMX-Sur",1),
+(11,"CDMX-Norte",1),
+(12,"GDL-Centro",2),
+(13,"MTY-Observatorio",3);
+
+CREATE TABLE mediciones (
+id_mediciones INT PRIMARY KEY AUTO_INCREMENT,
+id_estaciones INT,
+fecha DATE,
+temp_c INT,
+lluvia_mm INT
+);
+INSERT INTO mediciones (id_mediciones,id_estaciones,fecha,temp_c,lluvia_mm) VALUES
+(1,10,'2025-11-20',22.5,5),
+(2,10,'2025-11-21',23,0),
+(3,11,'2025-11-20',21,1),
+(4,12,'2025-11-20',24,0),
+(5,13,'2025-11-20',27,12);
+
+-- Queries
+
+-- Qué ciudades cuentan con estaciones meteorológicas.
+SELECT * FROM ciudades S JOIN estaciones T ON S.id_ciudad = T.id_ciudad;
+
+-- Qué estaciones sí tienen mediciones registradas.
+SELECT * FROM estaciones T JOIN mediciones U ON T.id_estaciones = U.id_estaciones;
+
+-- Qué ciudades no tienen estaciones.
+SELECT * FROM ciudades S JOIN estaciones T ON S.id_ciudad = T.id_ciudad;
+
+-- Cómo se comporta la temperatura y la lluvia según las mediciones capturadas.
+SELECT temp_c / lluvia_mm AS comportamiento FROM mediciones ; 

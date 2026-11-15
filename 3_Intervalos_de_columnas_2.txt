@@ -1,0 +1,22 @@
+-- Intervalos de columnas 2
+
+USE world;
+SHOW TABLES;
+SELECT * FROM employees;
+
+-- Muestra los empleados hombres de apellido Facello
+SELECT * FROM employees WHERE gender = "M" AND last_name = "Facello";
+
+# ¿ Como poder utilizar el operador NOT ?
+SELECT NOT False;
+# Muestra todos aquellos empleados que sean femeninos
+SELECT * FROM employees WHERE gender != "M";
+# O bien, usando el operador NOT
+SELECT * FROM employees WHERE NOT gender = "M";
+
+SELECT * FROM employees WHERE emp_no NOT BETWEEN 10001 AND 10005;
+# Aqui es importante considerar el orden de los elementos para BETWEEN
+SELECT * FROM employees WHERE emp_no BETWEEN 10005 AND 10001; # ERROR
+
+# Apliquemos BETWEEN para el caso de los cumpleaños en el año 53
+SELECT * FROM employees WHERE birth_date BETWEEN "1953-01-01" AND "1953-12-31";

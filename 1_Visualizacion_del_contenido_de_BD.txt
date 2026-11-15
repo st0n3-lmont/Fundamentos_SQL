@@ -1,0 +1,21 @@
+-- ¿Con que base se va a trabajar?
+USE migracion_db;
+
+-- Visualizacion del contenido
+-- Muestra las tablas de la base de datos 
+SHOW TABLES;
+-- Muestra todo el contenido de una tabla en especifico
+SELECT * FROM albergues;
+SELECT * FROM migrantes;
+-- Selecciona una columna de alguna tabla
+SELECT nombre FROM migrantes;
+-- Selecciona mas de una columna de la alguna tabla (,)
+SELECT nombre, edad, nacionalidad FROM migrantes;
+
+-- Manipulacion de encabezados y visualizacion
+-- Cambia el encabezado de una columna (solo admite una palabra)
+SELECT edad AS Age FROM migrantes;
+-- Cambia el encabezado de mas de una columna
+SELECT edad AS age, nacionalidad AS country FROM migrantes;
+-- Cambia el encabezado de una columna por una cadena de caracteres
+SELECT edad AS "Edad de la persona" FROM migrantes;

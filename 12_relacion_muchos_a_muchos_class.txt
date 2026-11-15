@@ -1,0 +1,26 @@
+-- n:n
+-- Un estudiante puede inscribirse a muchas materias y cada materia puede tener muchos estudiantes
+
+create database base_estudiantes;
+use base_estudiantes;
+
+create table estudiantes(
+id_estudiantes int primary key auto_increment,
+nombre varchar(100)
+);
+
+create table materias (
+id_materias int primary key auto_increment,
+materia varchar(100)
+);
+
+create table estudiantes_materias(
+id_estudiantes int,
+id_escuelas int,
+primary key(id_estudiantes, id_escuelas),
+foreign key(id_estudiantes) references estudiantes(id) 
+);
+
+--------------------------------------------------------------------
+
+-- Un medico tiene varios pacientes y un paciente puede tener varios medicos

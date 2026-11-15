@@ -1,0 +1,53 @@
+/*
+Ejercicio
+Crear un sistema de gestion de libros donde cada libro pueda estar asociado a varias categorias, y una
+ categoria puede contener varios libros.
+ */
+ -- Solucion:
+ -- Observamos que se trata de un caso de muchos a muchos
+ create database muchosmuchos;
+ use muchosmuchos;
+ 
+ create table autores(
+ id_autor int primary key auto_increment,
+ nombre_autor varchar(100)
+ );
+ 
+ create table libros(
+ id_libros int primary key auto_increment,
+ nombre_libro varchar(100)
+ );
+ 
+ -- Debido a que se trata de una relacion N:M
+ create table autor_libro(
+ id_autor int, -- LLave foranea que hace referencia a la 1ra tabla
+ id_libro int, -- Llave foranea que hace referencia a la 2da tabla
+ primary key (id_autor, id_libro),
+ foreign key (id_autor) references autores(id_autor),
+ foreign key (id_libro) references libros(id_libros)
+ );
+ 
+ 
+ insert into autores (nombre_autor) values
+ ("Apostol"),
+ ("Spivak"),
+ ("Resnick")
+ ;
+ 
+ insert into libros(nombre_libro) values
+ ("Calculo"),
+ ("Calculus"),
+ ("Fisica 1")
+ ;
+ 
+ -- Relacion 1:1
+ insert into autor_libro (id_autor,id_libro) values
+ (1,1),
+ (1,2),
+ (2,3),
+ (3,1)
+ ;
+ 
+ select * from autor_libro;
+ 
+ 

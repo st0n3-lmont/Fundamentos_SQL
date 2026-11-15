@@ -1,0 +1,37 @@
+
+# SCRIPTS 25/09/25
+
+USE migracion_db;
+SHOW TABLES;
+-- Muestra el contenido de la tabla migrantes:
+SELECT * FROM migrantes;
+-- 1.- ¿Cual es el nombre del migrante que tiene la edad mayor a 30?
+SELECT * FROM migrantes WHERE edad > 30;
+-- 2.- ¿Cuales son los migrantes cuyo pais de origen es exactamente colombia?
+SELECT * FROM migrantes WHERE pais_origen = "Colombia";
+-- 3.- ¿Cuales son los migrantes que no tienen la nacionalidad Peru?
+SELECT * FROM migrantes WHERE nacionalidad != "Peru";
+SELECT * FROM migrantes WHERE NOT nacionalidad = "Peru";
+-- 4.- ¿Cuales son los migrantes de Argentina que tienen una edad superior a 30 años?
+SELECT * FROM migrantes WHERE pais_origen = "Argentina" AND edad > 30 ;
+-- 5.- ¿Cuales son los migrantes que provienen de Chile o Mexico?
+SELECT * FROM migrantes WHERE pais_origen = "Chile" OR pais_origen = "México" ;
+-- 6.- ¿Cuales son los migrantes que NO tienen el pais de origen Mexico?
+SELECT * FROM migrantes WHERE NOT pais_origen = "México";
+-- 7.- ¿Cuales son los migrantes cuyo nombre no es Ana Diaz?
+SELECT * FROM migrantes WHERE NOT nombre = "Ana Díaz";
+-- 8.- ¿Cuales son los migrantes cuya edad esta entre 25 y 30 años?
+SELECT * FROM migrantes WHERE (edad >= 25 AND edad <= 30) ;
+SELECT * FROM migrantes WHERE (edad BETWEEN 25 AND 30) ;
+-- 9.- ¿Cuales son los migrantes cuya edad esta entre 20 y 25 años o entre 35 y 40 años?
+SELECT * FROM migrantes WHERE (edad >= 20 AND edad <= 25) OR (edad >= 35 AND edad <= 40) ;
+SELECT * FROM migrantes WHERE (edad BETWEEN 20 AND 25) OR (edad BETWEEN 35 AND 40) ;
+-- 10.- ¿Cuales son los migrantes cuya edad NO esta entre 30 y 35 años?
+SELECT * FROM migrantes  WHERE NOT (edad >= 30 AND edad <= 35) ;
+SELECT * FROM migrantes  WHERE edad NOT BETWEEN 30 AND 35 ;
+-- 11.-¿Cuales son los albergues con capacidad mayor a 200?
+SELECT * FROM albergues WHERE capacidad > 200 ;
+-- 12.-¿Cuales son los migrantes que llegaron despues del 1 de enero de 2024?
+SELECT * FROM migrantes WHERE fecha_llegada > "2024-01-01" ;
+-- 13.-¿Cuales son los albergues ubicados en el sur de mexico? 
+SELECT * FROM albergues WHERE region = "Sur" ;

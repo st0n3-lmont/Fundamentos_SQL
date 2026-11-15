@@ -1,0 +1,29 @@
+create database deptos;
+use deptos;
+
+-- Tabla principal (padre)
+CREATE TABLE Departamentos (
+    id_departamento INT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL
+);
+
+-- Tabla secundaria (hija)
+CREATE TABLE Empleados (
+    id_empleado INT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    id_departamento INT,
+    FOREIGN KEY (id_departamento) REFERENCES Departamentos(id_departamento)
+);
+show tables;
+select * from empleados;
+
+
+-- Insertar datos en la tabla padre
+INSERT INTO Departamentos (id_departamento, nombre) VALUES 
+(1, 'Ventas'),
+(2, 'TI')
+;
+
+-- Insertar datos en la tabla hija (válido)
+INSERT INTO Empleados (id_empleado, nombre, id_departamento) VALUES 
+(1, 'Juan Pérez', 1);  -- Válido, el departamento 1 existe

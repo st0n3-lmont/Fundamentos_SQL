@@ -1,0 +1,43 @@
+-- Crear una base de datos:
+CREATE DATABASE ciencia_datos_base;
+USE ciencia_datos_base;
+
+-- Tabla de alumnos:
+CREATE TABLE alumnos (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	nombre VARCHAR(100),
+    correo VARCHAR(100),
+    turno VARCHAR(100),
+    carrera VARCHAR(100),
+    sexo VARCHAR(100)
+);
+INSERT INTO alumnos(nombre,correo, turno, carrera,sexo) VALUES
+("Anton","alumno_1@dominio.com","intermedio","Ciencia de datos","M"),
+("Alexis","alumno_2@dominio.com","Tarde","Contabilidad","M"),
+("Joselin","alumno_3@dominio.com","matituno","Derecho","F");
+
+CREATE TABLE calificaciones (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    alumno_id INT,
+    prom_semestral INT,
+    FOREIGN KEY (alumno_id) REFERENCES alumnos(id)
+);
+INSERT INTO calificaciones(alumno_id, prom_semestral) VALUES
+(1,10),
+(2,10),
+(3,9);
+
+CREATE TABLE problemas (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    alumno_id INT,
+    problema VARCHAR(100),
+    FOREIGN KEY (alumno_id) REFERENCES alumnos(id)
+);
+INSERT INTO problemas(alumno_id, problema) VALUES
+(1,"Distancia"),
+(2,"Recursos"),
+(3,"Trabajo");
+
+-- Verificar
+SHOW TABLES;
+SELECT * FROM calificaciones;

@@ -1,0 +1,45 @@
+https://mystery.knightlab.com/
+
+SELECT * FROM drivers_license WHERE plate_number like '%H42W%'
+SELECT * FROM get_fit_now_check_in WHERE membership_id like '48Z%'
+
+
+
+Suspects:
+SELECT * FROM get_fit_now_member 
+WHERE id LIKE "48z%" 
+AND membership_status = "gold"
+
+membership_id:
+48Z7A 
+48Z55
+
+THE MURDER HAPPEND ON JANUARY 9TH:
+
+SELECT * FROM get_fit_now_check_in
+WHERE membership_id = "48Z7A" AND check_in_date = 20180109
+
+BOTH SUSPECTS HAD A CHECK_IN_DATE ON 20180109:
+
+membership_id, check_in, person_id, name, license_id
+48Z7A : 1600 : 28819 : Joe Germuska : 173289
+48Z55 : 1530 : 67318 : Jeremy Bowers : 423327
+
+killer? : Jeremy Bowers
+
+SELECT * FROM drivers_license 
+WHERE plate_number LIKE "%H42W%"
+AND id = 423327
+
+
+try querying the interview transcript of the murderer to find 
+the real villain behind this crime.
+
+Congrats, you found the murderer! But wait, there's more... If you think you're up for a challenge, try querying the interview transcript of the murderer to find the real villain behind this crime. If you feel especially confident in your SQL skills, try to complete this final step with no more than 2 queries. Use this same INSERT statement with your new suspect to check your answer.
+
+I was hired by a woman with a lot of money. I don't know her name but I know she's around 5'5" (65") or 5'7" (67"). She has red hair and she drives a Tesla Model S. I know that she attended the SQL Symphony Concert 3 times in December 2017.
+
+ 
+
+
+

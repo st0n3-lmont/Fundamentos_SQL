@@ -1,0 +1,19 @@
+# Solo una vez
+pip install SQLAlchemy PyMySQL pandas
+
+# conexion
+import mysql.connector
+import pandas as pd
+import warnings 
+warnings.filterwarnings("ignore", message="pandas only supports SQLAlchemy")
+
+conexion = mysql.connnector.conect(
+    host = "localhost",
+    user="root",
+    password ="",
+    database="edu_agregados_db"
+)
+cur = conexion.cursor(buffered=True)
+print("Conexion exitosa a MySQL")
+
+# celda

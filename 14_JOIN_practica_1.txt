@@ -1,0 +1,55 @@
+/* Analizar el inventario y las ventas de una tienda para
+identificar productos activos, productos sin inventario y
+productos vendidos. */
+
+-- Base de datos:
+
+CREATE DATABASE practica_1;
+USE practica_1;
+
+-- Tablas:
+
+CREATE TABLE productos (
+id_pro INT PRIMARY KEY AUTO_INCREMENT,
+nombre_producto VARCHAR(50),
+precio_unitario INT
+);
+INSERT INTO productos (nombre_producto,precio_unitario) VALUES
+("Laptop Gamer",25000),
+("Teclado RGB",800),
+("Audífonos BT",1200),
+("Monitor 27in",5300),
+("Webcam HD",700);
+
+CREATE TABLE inventario (
+id_inv INT PRIMARY KEY AUTO_INCREMENT,
+producto_id INT,
+cantidad INT
+);
+INSERT INTO inventario (producto_id,cantidad) VALUES
+(1,5),
+(2,25),
+(3,0),
+(5,10);
+
+CREATE TABLE ventas (
+id_ven INT PRIMARY KEY AUTO_INCREMENT,
+producto_id INT,
+unidades INT
+);
+INSERT INTO ventas (producto_id,unidades) VALUES
+(1,2),
+(2,10),
+(3,5),
+(4,0);
+-- Qué productos han sido vendidos recientemente:
+SELECT * FROM productos E RIGHT JOIN ventas S ON E.id_pro = S.id_ven;
+
+-- Cuáles están registrados, pero no tienen inventario:
+SELECT * FROM productos E JOIN inventario T ON E.id_pro = T.id_inv WHERE cantidad = 0;
+
+-- Cuáles tienen inventario, pero no se han vendido
+SELECT * FROM inventario T right JOIN ventas S ON T.id_inv = S.id_ven WHERE unidades = 0;
+
+
+
